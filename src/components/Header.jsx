@@ -1,0 +1,34 @@
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { logout } from '../store/reducers/user';
+import Button from './Button';
+import { lightColor } from '../AppColors';
+
+const HeaderStyled = styled.header`
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid ${lightColor};
+`;
+
+export default function Header() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/');
+  };
+
+  return (
+    <HeaderStyled>
+      <h1>Fnd Store</h1>
+      <Button onClick={handleLogout}>Logout</Button>
+    </HeaderStyled>
+  );
+}
