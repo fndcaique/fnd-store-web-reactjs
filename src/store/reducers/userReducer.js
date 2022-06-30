@@ -1,11 +1,10 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
-import userService from '../../services/userService';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import * as userService from '../../services/userService';
 
 const initialState = {
   login: '',
   password: '',
-  isAuthenticated: false
+  isAuthenticated: false,
 };
 
 // async actions
@@ -34,7 +33,7 @@ export const userSlice = createSlice({
     logout() {
       userService.saveUser(null);
       return initialState;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(loginActionThunk.fulfilled, (state, action) => {
@@ -43,7 +42,7 @@ export const userSlice = createSlice({
       const newState = { login, password, isAuthenticated: true };
       return newState;
     });
-  }
+  },
 });
 
 // Action creators are generated for each case reducer function

@@ -1,10 +1,9 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { logout } from '../store/reducers/user';
-import Button from './Button';
 import { lightColor } from '../AppColors';
+import { logout } from '../store/reducers/userReducer';
+import Button from './Button';
 
 const HeaderStyled = styled.header`
   display: flex;
@@ -28,7 +27,7 @@ export default function Header() {
   return (
     <HeaderStyled>
       <h1>Fnd Store</h1>
-      <Button onClick={handleLogout}>Logout</Button>
+      <Button onClick={ handleLogout }>Logout</Button>
     </HeaderStyled>
   );
 }

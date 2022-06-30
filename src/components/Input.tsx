@@ -1,7 +1,8 @@
+import { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { primaryColor } from '../AppColors';
 
-const Input = styled.input`
+const Input = styled.input<InputHTMLAttributes<string>>`
   box-sizing: border-box;
   height: 34px;
   margin-bottom: 10px;

@@ -1,12 +1,12 @@
 const USER_KEY = 'USER_KEY';
 
 export function login(user) {
-  return new Promise((resolve) =>
+  return new Promise((resolve) => {
     setTimeout(() => {
       console.log('user loggin...', user);
       resolve();
-    }, 3000)
-  );
+    }, 3000);
+  });
 }
 
 export function saveUser(user) {
@@ -19,11 +19,3 @@ export function getUser() {
 
   return user;
 }
-
-const userService = {
-  login,
-  saveUser,
-  getUser
-};
-
-export default userService;
