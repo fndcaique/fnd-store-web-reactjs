@@ -19,10 +19,10 @@ const InputFieldStyled = styled.div`
 `;
 
 type InputFieldAttributes = HTMLInputElement & {
-  labelText: string,
-  helperText: string
-  onChange: ChangeEventHandler<HTMLInputElement> & FormEventHandler<string>
-}
+  labelText: string;
+  helperText: string;
+  onChange: ChangeEventHandler<HTMLInputElement> & FormEventHandler<string>;
+};
 
 function InputField({
   labelText,
@@ -35,12 +35,17 @@ function InputField({
 }: InputFieldAttributes) {
   return (
     <InputFieldStyled>
-      <label htmlFor={ id }>{ labelText }</label>
-      <Input { ...{
-        id, type, value, placeholder, onChange,
-      } }
+      <label htmlFor={id}>{labelText}</label>
+      <Input
+        {...{
+          id,
+          type,
+          value,
+          placeholder,
+          onChange,
+        }}
       />
-      <span>{ helperText }</span>
+      <span>{helperText}</span>
     </InputFieldStyled>
   );
 }

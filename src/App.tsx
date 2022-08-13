@@ -22,11 +22,15 @@ const AppStyled = styled.div`
   }
 `;
 
+// const isUserLoaded = false;
+
 function App() {
+  // const [isUserLoaded, setIsUserLoaded] = useState(false);
   const dispatch = useDispatch();
   const isLoggedIn = useAuth();
 
   useEffect(() => {
+    console.log('load user...');
     dispatch(loadUser());
   }, [dispatch]);
 
@@ -36,26 +40,35 @@ function App() {
 
   useEffect(() => {
     console.log('simulate did update');
-  }, []);
+  });
+
+  // if (!isUserLoaded) {
+  //   console.log('load user...');
+
+  //   dispatch(loadUser());
+  //   isUserLoaded = true;
+  // }
+
+  console.log('render');
 
   return (
     <AppStyled>
-      { isLoggedIn && <Header /> }
+      {isLoggedIn && <Header />}
       <RouterGuard>
         <Routes>
-          <Route path="login" element={ <Login /> } />
+          <Route path="login" element={<Login />} />
           <Route
             path="/"
-            element={ (
+            element={
               // <ProtectedRoute>
               <Home />
               // </ProtectedRoute>
-            ) }
+            }
           >
-            <Route path="hello" element={ <h1>Hello</h1> } />
+            <Route path="hello" element={<h1>Hello</h1>} />
           </Route>
-          <Route path="good" element={ <h1>Good</h1> } />
-          <Route path="*" element={ <NotFound /> } />
+          <Route path="good" element={<h1>Good</h1>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </RouterGuard>
     </AppStyled>

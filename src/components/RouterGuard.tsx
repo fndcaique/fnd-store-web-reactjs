@@ -10,14 +10,14 @@ function RouterGuard({ children }: PropsWithChildren) {
   console.log(isAuth, location.pathname);
 
   if (!isAuth && !publicRoutes.includes(location.pathname)) {
-    console.log('navigate to login..');
+    console.log('navigate to login...');
     return <Navigate to="/login" />;
   }
 
   return (
     <>
       <div>RouterGuard</div>
-      { children }
+      {children}
     </>
   );
 }

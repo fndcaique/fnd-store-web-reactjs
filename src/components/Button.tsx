@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 import { lightColor, primaryColor } from '../AppColors';
 
 interface ButtonProps {
-  primary?: boolean,
-  fullWidth?: boolean
+  primary?: boolean;
+  fullWidth?: boolean;
 }
 
 const Button = styled.button<ButtonProps>`
@@ -24,13 +24,15 @@ const Button = styled.button<ButtonProps>`
     opacity: 0.8;
   }
 
-  ${(props) => props.primary
-    && css`
+  ${(props) =>
+    props.primary &&
+    css`
       background: ${primaryColor};
       border-color: ${primaryColor};
     `}
-  ${(props) => props.fullWidth
-    && css`
+  ${(props) =>
+    props.fullWidth &&
+    css`
       width: 100%;
     `}
 `;

@@ -27,7 +27,7 @@ export default function Header() {
   return (
     <HeaderStyled>
       <h1>Fnd Store</h1>
-      <Button onClick={ handleLogout }>Logout</Button>
+      <Button onClick={handleLogout}>Logout</Button>
     </HeaderStyled>
   );
 }

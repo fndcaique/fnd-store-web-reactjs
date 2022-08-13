@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { lightColor } from '../AppColors';
 import Button from '../components/Button';
 import InputField from '../components/InputField';
 import Loading from '../components/Loading';
+import useAuth from '../hooks/useAuth';
 import { loginActionThunk } from '../store/reducers/userReducer';
 
 const LoginStyled = styled.div`
@@ -36,9 +37,7 @@ export default function Login() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const isLoggedIn = useSelector(
-    (globalState) => globalState.user.isAuthenticated,
-  );
+  const isLoggedIn = useAuth();
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
@@ -54,32 +53,30 @@ export default function Login() {
   return (
     <LoginStyled>
       <h1>
-        Hello! Welcome to the
-        { ' ' }
-        <strong>Fnd Store</strong>
+        Hello! Welcome to the <strong>Fnd Store</strong>
       </h1>
       <p>Please login to continue...</p>
-      <form onSubmit={ handleSubmit }>
+      <form onSubmit={handleSubmit}>
         <InputField
           id="login"
           labelText="Login"
-          value={ login }
-          onChange={ (event) => setLogin(event.target.value) }
+          value={login}
+          onChange={(event) => setLogin(event.target.value)}
         />
         <InputField
           id="password"
           type="password"
           labelText="Password"
-          value={ password }
-          onChange={ (event) => setPassword(event.target.value) }
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
         />
-        { isLoading ? (
+        {isLoading ? (
           <Loading />
         ) : (
           <Button primary fullWidth>
             Submit
           </Button>
-        ) }
+        )}
       </form>
     </LoginStyled>
   );
